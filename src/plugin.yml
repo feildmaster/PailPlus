@@ -1,4 +1,5 @@
-name: AdvancedPail
-main: feildmaster.AdvancedPail.AdvPail
-version: 0.1 alpha
+name: PailPlus
+main: feildmaster.PailPlus.PailPlus
+version: 0.2 beta
 author: feildmaster
+dev-url: http://dev.bukkit.org/server-mods/pailplus/

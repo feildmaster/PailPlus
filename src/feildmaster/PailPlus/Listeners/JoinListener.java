@@ -1,6 +1,6 @@
-package feildmaster.AdvancedPail.Listeners;
+package feildmaster.PailPlus.Listeners;
 
-import feildmaster.AdvancedPail.Monitors.Util;
+import feildmaster.PailPlus.Monitors.Util;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerListener;
@@ -8,12 +8,12 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class JoinListener extends PlayerListener {
     public void onPlayerJoin(PlayerJoinEvent event) {
-        Util.getAdvPail().registerPlayer(event.getPlayer());
+        Util.getPailPlus().registerPlayer(event.getPlayer());
     }
     public void onPlayerQuit(PlayerQuitEvent event) {
-        Util.getAdvPail().unregisterPlayer(event.getPlayer());
+        Util.getPailPlus().unregisterPlayer(event.getPlayer());
     }
     public void onPlayerKick(PlayerKickEvent event) {
-        Util.getAdvPail().unregisterPlayer(event.getPlayer());
+        Util.getPailPlus().unregisterPlayer(event.getPlayer());
     }
 }

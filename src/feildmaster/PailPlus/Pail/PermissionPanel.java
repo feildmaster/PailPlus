@@ -1,6 +1,6 @@
-package feildmaster.AdvancedPail.Pail;
+package feildmaster.PailPlus.Pail;
 
-import feildmaster.AdvancedPail.Monitors.Util;
+import feildmaster.PailPlus.Monitors.Util;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -17,13 +17,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class PermissionPanel extends JPanel {
     List<String> players = new ArrayList<String>();
     Boolean updating = false;
-    
+
     public PermissionPanel() {
         init();
     }
-    
-    private void init() {
 
+    private void init() {
         permScroll = new JScrollPane();
         saveNode = new JButton();
         saveConf = new JButton();
@@ -38,7 +37,7 @@ public class PermissionPanel extends JPanel {
                 Util.getPermsConfig().save();
             }
         });
-        
+
         saveNode.setText("Add Node");
         saveNode.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -47,7 +46,7 @@ public class PermissionPanel extends JPanel {
         });
 
         permScroll.setViewportView(panel);
-        
+
         playerSelect.setModel(new DefaultComboBoxModel());
         playerSelect.addItem("Select a player");
         playerSelect.addActionListener(new ActionListener() {
@@ -55,7 +54,7 @@ public class PermissionPanel extends JPanel {
                 reloadPermissions();
             }
         });
-        
+
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,51 +84,50 @@ public class PermissionPanel extends JPanel {
                 .addComponent(permScroll, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
         );
     }
-    
+
     public void addPlayer(String name){
         if(!players.contains(name)) {
             playerSelect.addItem(name);
             players.add(name);
         }
     }
-    
+
     public void setSave(Boolean value) {
         saveConf.setEnabled(value);
     }
-    
+
     public void addPermission(String node) {
         if(node.isEmpty()) return;
-        
+
         // Add to config
         Util.getPermsConfig().addNode(node);
         // Add to panel
         panel.addNode(node);
-        
+
         inputNode.setText("");
-        
+
         // Reload permissions
-        Util.getAdvPail().getAI().getPermissionPanel().reloadPermissions();
+        Util.getPailPlus().getAI().getPermissionPanel().reloadPermissions();
     }
-    
+
     public PermPanel getPannel() {
         return panel;
     }
-    
-    // Variables declaration - do not modify
-    private JButton saveNode;
+
+
     private JButton saveConf;
+    private JButton saveNode;
+    private JTextField inputNode;
     private JComboBox playerSelect;
     private JScrollPane permScroll;
-    private JTextField inputNode;
     private PermPanel panel;
-    // End of variables declaration
-    
+
     public void reloadPermissions() {
         updating = true;
         panel.loadPlayerPerms(playerSelect.getSelectedItem().toString());
         updating = false;
     }
-    
+
     public void togglePlayerPerms(String perm, Boolean value) {
         if(!updating)
             Util.setPlayerPermission(playerSelect.getSelectedItem().toString(), perm, value);
