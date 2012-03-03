@@ -1,0 +1,5 @@
+name: ${name}
+main: com.feildmaster.pailplus.PailPlus
+version: ${version}
+author: feildmaster
+dev-url: http://dev.bukkit.org/server-mods/pailplus/

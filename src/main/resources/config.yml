@@ -1,0 +1,5 @@
+# These settings do nothing at the moment!
+
+always_show_tray: false
+minimize_to_tray: false
+close_action: 0
